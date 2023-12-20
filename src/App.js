@@ -1,23 +1,48 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import MovieList from './Components/MovieList';
+import { moviesData } from './Data';
+import Navigation from './Components/Navigation/Navigation';
+import Addmovie from './Components/Addmovie';
+import Filtermovie from './Components/Filtermovie';
+import { Button } from 'react-bootstrap';
+import btn from './btn.css'
+
 
 function App() {
+  console.log(moviesData)
+  const [movies, setMovies]=useState(moviesData)
+
+ 
+  const [filtermov,setFiltermov]= useState('')
+  console.log(filtermov)
+
+  const [newrate,setNewrate]=useState(0)
+  console.log(newrate)
+  
+ 
+  
+  function addmovie (newmovie){
+    setMovies([...movies,newmovie])
+  }
+  
+ 
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div  className="App">
+   <Navigation setFiltermov={setFiltermov} setNewrate={setNewrate} newrate={newrate} filtermov={filtermov}  />
+ 
+
+
+
+   <Addmovie add={addmovie} />
+   <Filtermovie setFiltermov={setFiltermov} setNewrate={setNewrate} newrate={newrate} filtermov={filtermov}/>
+   
+   <MovieList movies={movies} filtermov={filtermov} newrate={newrate}  />
+   
+   
     </div>
   );
 }
