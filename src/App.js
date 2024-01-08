@@ -6,8 +6,10 @@ import { moviesData } from './Data';
 import Navigation from './Components/Navigation/Navigation';
 import Addmovie from './Components/Addmovie';
 import Filtermovie from './Components/Filtermovie';
-import { Button } from 'react-bootstrap';
-import btn from './btn.css'
+import { Route, Routes } from 'react-router-dom';
+import Home from './Components/Home';
+import MovieDetails from './Components/MovieDetails';
+
 
 
 function App() {
@@ -40,7 +42,14 @@ function App() {
    <Addmovie add={addmovie} />
    <Filtermovie setFiltermov={setFiltermov} setNewrate={setNewrate} newrate={newrate} filtermov={filtermov}/>
    
-   <MovieList movies={movies} filtermov={filtermov} newrate={newrate}  />
+   
+   <Routes>
+    <Route path='/' element={<Home />}/>
+    <Route path='/movies' element={<MovieList movies={movies} filtermov={filtermov} newrate={newrate}  />}/>
+    <Route path='/movies/:id'  element={ <MovieDetails /> } />
+   </Routes>
+
+  
    
    
     </div>
