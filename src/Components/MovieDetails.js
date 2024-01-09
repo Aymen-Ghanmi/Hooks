@@ -38,7 +38,8 @@ const MovieDetails = () => {
           {movie.description}
           </Card.Text>
           <div style={{width:'250px', height:'150px', display:'flex', justifyContent:'center'}}> 
-          <Link>{movie.trailer}</Link>
+          
+          <a href={movie.trailer} target='_blank' >Trailer</a>
           <Button onClick={()=> navigate(-1)} >Back</Button>
           <ReactStars count={5} value={movie.rate} half={false} edit={false}  size={24} color2={'#ffd700'} /> </div>
           
